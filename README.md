@@ -15,10 +15,16 @@ The application you are creating is a small block of registration for Springspre
 Once the user sign's up, there should be a mechanism to sign him in. Create a sign in page, where the user can enter his email-id and password for signing in. Once signed in, fetch all the details he had entered earlier and display it. Note: The profile photo must also be displayed.
 
 In addition to above, you are required to do the following:
+
 1. Store the IP address of the user when he signs up
+
 2. Raw passwords must not be stored and must be hashed
+
 3. Last login date & time must be recorded
+
 4. Remember me option - Once a user logs in and checks remember me, he should not need to enter the sign in details again.
+
+
 
 ### Technologies
 You can use any technology or framework for building the backend and frontend.
