@@ -1,0 +1,31 @@
+{%extends "header.html"%}
+{%block content%}
+<center>
+	<img src="{{BASE_URL}}/media/{{user.userprofile.picture}}" alt="Profile picture" style="height:150px;width:150px;border-radius:50%;">
+	<h3>User Dashboard</h3>
+	<p>Welcome to springspree 2015 registration portal</p>
+	<p>Profile information</p>
+</center>
+<table class="table table-striped table-hover">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Phone</th>
+			<th>College Name</th>
+			<th>Date of Birth</th>
+			<th>Sign Up Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="success">
+			<td>{{user.first_name}}</td>
+			<td>{{user.username}}</td>
+			<td>{{user.userprofile.phoneNumber}}</td>
+			<td>{{user.userprofile.collegeName}}</td>
+			<td>{{user.userprofile.dateOfBirth}}</td>
+			<td>{{user.userprofile.signUpDate}}</td>
+		</tr>
+	</tbody>
+</table>
+{%endblock%}
