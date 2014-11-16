@@ -1,0 +1,74 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{title}} | SpringSpree 2015</title>
+	<link rel="stylesheet" href="{% static "css/bootstrap.min.css"%}">
+	<link rel="stylesheet" href="{% static "css/style.css"%}">
+  <link rel="stylesheet" href="{% static "css/font-awesome.min.css"%}">
+</head>
+<body>
+<div class="navbar navbar-inverse" >
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="/">SpringSpree</a>
+  </div>
+  <div class="navbar-collapse collapse navbar-inverse-collapse">
+    <ul class="nav navbar-nav">
+      <li {% if current_page == "home" %}class="active"{%endif%}><a href="/">Home</a></li>
+      {% if user.is_authenticated %}
+      <li {% if current_page == "dashboard" %}class="active"{%endif%}><a href="/dashboard/">Dashboard</a></li>
+      {% else %}
+      <li {% if current_page == "register" %}class="active"{%endif%}><a href="{{BASE_URL}}/register">Register
+      </a></li>
+      {% endif %}
+    </ul>
+    {% if user.is_authenticated %}
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"></a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Settings</a></li>
+          <li><a href="{{BASE_URL}}/logout/">Logout</a></li>
+          <!-- <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li> -->
+        </ul>
+      </li>
+    </ul>
+    {%else%}
+    <form class="navbar-form navbar-right" action="{{BASE_URL}}/login/" method="POST">
+    {%csrf_token%}
+      <input class="form-control input-sm col-lg-6" type="text" name="email" placeholder="Email">
+      <input class="form-control input-sm col-lg-8" type="password" name="password" placeholder="Password">
+      <div class="checkbox" style="clear:both;">
+          <label>
+            <input type="checkbox" name="remember_me" value="0">Remember me
+      <input type="submit" value="Login" class="btn btn-xs btn-success">
+          </label>
+      </div>
+    </form>
+    {% endif %}
+  </div>
+</div>
+<div class="container">
+  {%if messages %}{% for message in messages %}
+        <div class="container-fluid">
+            <div class="alert alert-{{message.tags}} fade in" style="text-align:center;">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                {{ message|safe }}
+            </div>
+        </div>{% endfor %}{% endif %}
+  {%block content%}
+  {%endblock%}
+  </div>
+</body>
+<script src="{% static "js/jquery-1.10.2.min.js"%}"></script>
+<script src="{% static "js/bootstrap.min.js"%}"></script>
+</html>
