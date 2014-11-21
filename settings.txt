@@ -1,0 +1,28 @@
+sql stuff
+
+____________________________
+create database if not exists spring;
+use spring;
+CREATE TABLE  `fatable` (
+ `name` VARCHAR( 20 ) NOT NULL ,
+ `email` VARCHAR( 40 ) NOT NULL ,
+ `phone` INT( 11 ) NOT NULL ,
+ `pass` VARCHAR( 32 ) NOT NULL ,
+ `cname` VARCHAR( 30 ) NOT NULL ,
+ `dob` DATE NOT NULL ,
+ `sdate` DATE NOT NULL ,
+ `ext` VARCHAR( 5 ) NOT NULL ,
+ `ipad` VARCHAR( 20 ) NOT NULL ,
+ `lastlogin` DATETIME NOT NULL
+)ENGINE = INNODB DEFAULT CHARSET = utf8;
+_____________________________
+
+db stuff
+
+_____________________________
+dbuser = 'root'
+dbpass = ''
+dbname = 'spring'
+_____________________________
+
+just need to put the 3 files in server folder,and initialize the sql & voila! 
